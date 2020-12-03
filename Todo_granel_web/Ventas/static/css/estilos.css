@@ -1,0 +1,42 @@
+.main-header{
+    background: rgba(106, 176, 76,.5);
+    min-height: 200px;
+}
+
+.background-overley{
+    background: rgba(106, 176, 76,1.0);
+}
+
+.navbar{
+    box-shadow: 2px 2px 10px #259F33;
+    opacity: .9;
+    width: 100%;
+}
+
+.navbar .nav-item .nav-link{
+    color: darkgreen;
+}
+
+.navbar-toggler{
+    border-color:darkgreen;
+}
+
+.slider{
+    background: rgba(106, 176, 76,.5);
+}
+
+footer{
+    box-shadow: 2px 2px 10px #259F33;
+    opacity: 1;
+    background: rgba(106, 176, 76,.5);
+}
+
+.card-img-top{
+    height: 300px;
+}
+
+.contacto{
+    width: 100%;
+}
+
+

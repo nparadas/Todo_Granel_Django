@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo a Granel</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="icon/shopping-cart--v1.png">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/material-design-icons/css/material-design-iconic-font.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/beagle/css/app.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}"/>
+    </head>
+    <body class="be-splash-screen be-loading" id="div-loading">
+        <header class="main-header">
+            <div class="background-overley">
+                <!-- MENÚ-->
+                <nav class="navbar navbar-expand-lg navbar-succes bg-light">
+                    <div class="container">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="{% static 'img/Logo.png' %}" alt="TODO A GRANEL" width="100px">
+                        </a>                    
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="mdi mdi-menu"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'about' %}">Contacto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mi Carrito</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- FIN MENÚ-->
+            </div>
+            <div class="container">
+                <div class="be-wrapper be-login">
+                    <div class="be-content be-loading">
+                        <div class="main-content container-fluid">
+                            <div class="splash-container">
+                                <div class="card card-border-color card-border-color-success">
+                                    <div class="card-header"><img class="logo-img" src="{% static 'img/footer-fin.jpg' %}" alt="logo" width="260" height="110"></div>
+                                    <div class="card-body">
+                                        <form method="POST"> 
+                                            {{ form.as_p }}
+                                            {% csrf_token %}
+                                            <div class="form-group login-submit">
+                                                <button type="submit" id="btn_submit" class="btn btn-success btn-xl">Registrar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="be-spinner">
+                            <svg width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                <circle fill="none" stroke-width="4" stroke-linecap="round" cx="33" cy="33" r="30" class="circle"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </header>
+
+        <!--Inicio Footer-->
+    <footer>
+        <div class="container p-3 text-dark text-center">
+            <p>Copyrigth &copy; 2020</p>
+        </div>
+    </footer>
+    <!--Fin Footer-->
+        
+
+    <script type="text/javascript" src="{% static 'assets/lib/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.bundle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/select2/js/select2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/select2/js/select2.full.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/beagle/js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/js.cookie/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+    </body>
+</html>

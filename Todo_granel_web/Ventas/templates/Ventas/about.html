@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todo a Granel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="icon/shopping-cart--v1.png">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/material-design-icons/css/material-design-iconic-font.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/beagle/css/app.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}" />
+
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="background-overley">
+            <!-- MENÚ-->
+            <nav class="navbar navbar-expand-lg navbar-succes bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="{% static 'img/Logo.png' %}" alt="TODO A GRANEL" width="100px">
+                    </a>                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}">Contacto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mi Carrito</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- FIN MENÚ-->
+        </div>
+    </header>
+
+    <section class="container text-center">
+    </section>
+
+    <div class="container">
+        <div class="contacto">
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">Acerca de Nosotros</div>
+                  <div class="tab-container">
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item"><a class="nav-link active" href="#home5" data-toggle="tab" role="tab" aria-selected="true"><span class="icon mdi mdi-balance"></span>Historia</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#profile5" data-toggle="tab" role="tab" aria-selected="false"><span class="icon mdi mdi-flag"></span>Misión y visión</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#messages5" data-toggle="tab" role="tab" aria-selected="false"><span class="icon mdi mdi-email"></span>Contacto</a></li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="home5" role="tabpanel">
+                        <h4>Nuestra Historia</h4>
+                        <p>La idea de Granel Chile (en ese tiempo EcoGranel Chile) nace el año 2019 con la finalidad de abastecer de productos frescos, en formato a granel y precio justo la comuna de Cochrane, en la Patagonia Chilena. El año 2020 se forma el ecommerce para comenzar las ventas en Santiago, sumándose al mercado de las pymes que buscan reducir el consumo de plásticos y ofrecer productos de calidad. Hoy toda la operación de Granel Chile se concentra en Santiago, preparándonos para nuevos desafíos!</p>
+                      </div>
+                      <div class="tab-pane" id="profile5" role="tabpanel">
+                        <p> Misión Llevar hasta la puerta de tu casa los mejores productos naturales para una óptima nutrición, una selección de legumbres, frutos secos, frutos deshidratados, cereales, granos, etc..</p>
+                        <p>Visión Sumarnos y también integrar a nuevos adherentes tanto de una alimentación saludable, como también a quienes desean poner en práctica las 3R`S, Reducir, Reutilizar y Reciclar. Por cada kilo de legumbres que compras en el comercio tradicional estás usando un envoltorio plástico de costosa producción que no solo encarece el producto final si no que además con un tremendo costo para el medio ambiente, ya que su proceso de degradación es lento y muchas veces termina en nuestros océanos, o poniendo el peligro el hábitat de otros seres vivos y su supervivencia. Nosotros te ayudamos a reducir este impacto con nuestros envases re utilizables, etiquetados, y además todo tu proceso de compra lo puedes hacer desde la comodidad de tu casa, incluso desde tu teléfono. Seamos cada vez más!! Somos Todo a granel</p>
+                      </div>
+                      <div class="tab-pane" id="messages5" role="tabpanel">
+                        <p>Contacto al Telefono : +56975723280 </p>
+                        <p> direccion : Padre Alonso de Ovalle 1586, Santiago Centro.</p>
+                        <p>email : todoagranel@gmail.com</p>
+                        <p>instagram : @todoagranel</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header card-header-divider">Encuentranos..<span class="card-subtitle"></span></div>
+              <div class="card-body">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.0773569560397!2d-70.65984338484473!3d-33.44729108077486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c507f91be917%3A0xcfac72a68dd4b986!2sDuoc%20UC%20-%20Sede%20Padre%20Alonso%20de%20Ovalle!5e0!3m2!1ses-419!2scl!4v1601259503868!5m2!1ses-419!2scl" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+
+    
+    <!--Inicio Footer-->
+    <footer>
+        <div class="container p-3 text-dark text-center">
+            <p>Copyrigth &copy; 2020</p>
+        </div>
+    </footer>
+    <!--Fin Footer-->
+
+
+    <script type="text/javascript" src="{% static 'assets/lib/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.bundle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/select2/js/select2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/select2/js/select2.full.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/beagle/js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/lib/js.cookie/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+</body>
+
+</html>

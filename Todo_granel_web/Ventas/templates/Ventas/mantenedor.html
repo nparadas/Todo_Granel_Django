@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="icon/shopping-cart--v1.png">
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/material-design-icons/css/material-design-iconic-font.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/beagle/css/app.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+</head>
+
+<body>
+  <!-- MENÚ-->
+  <nav class="navbar navbar-expand-lg navbar-succes bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="{% static 'img/Logo.png' %}" alt="TODO A GRANEL" width="100px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="mdi mdi-menu"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Mi Carrito</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" >Cerrar sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- FIN MENÚ-->
+
+
+  <!-- tabla -->
+  <br>
+  <div class="container-fluid">
+    <div class="card card-table">
+      <div class="card-header">
+        <button class="btn btn-rounded btn-space btn-success" onclick="return mostrar()"><i
+            class="icon icon-left mdi mdi-plus"></i>Agregar Producto</button>
+
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:23%;">Id producto</th>
+              <th style="width:23%;">Nombre producto</th>
+              <th class="number" style="width:23%;">Precio</th>
+              <th class="number" style="width:23%;">Cantidad</th>
+              <th class="actions" style="width:5%;">Modificar</th>
+              <th class="actions" style="width:5%;">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Avena integral</td>
+              <td class="number">1400</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Avena machacada</td>
+              <td class="number">1400</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Avena organica</td>
+              <td class="number">5000</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Avena sin gluten</td>
+              <td class="number">1400</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Quinoa</td>
+              <td class="number">3000</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Avena Quinoa maqui</td>
+              <td class="number">3000</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Hojuela de maiz</td>
+              <td class="number">2800</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Amaranto</td>
+              <td class="number">2800</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Arveja partida</td>
+              <td class="number">2000</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Garbanzos nacional</td>
+              <td class="number">3600</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Lenteja negra</td>
+              <td class="number">3600</td>
+              <td class="number">50</td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                    onclick="return mostrareditar()"></i></a></td>
+              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                    onclick="return mostrareliminar()"></i></a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <!--fin tabla-->
+  <br>
+  <br>
+  <br>
+  <!--Inicio Footer-->
+  <br>
+  <br>
+  <footer>
+    <div class="container p-3 text-dark text-center">
+      <p>Copyrigth &copy; 2020</p>
+    </div>
+  </footer>
+  <!--Fin Footer-->
+
+  <script type="text/javascript" src="assets/lib/jquery/jquery.js"></script>
+  <script type="text/javascript" src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script type="text/javascript" src="assets/lib/select2/js/select2.js"></script>
+  <script type="text/javascript" src="assets/lib/select2/js/select2.full.js"></script>
+  <script type="text/javascript" src="assets/beagle/js/app.js"></script>
+  <script type="text/javascript" src="assets/lib/js.cookie/js.cookie.js"></script>
+  <script type="text/javascript" src="js/mantenedor.js"></script>
+
+
+  <!-- modal agregar-->
+  <div class="modal fade colored-header colored-header-success show" id="md-form-create" tabindex="-1" role="dialog"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-header-colored">
+          <h3 class="modal-title">Agregar productos</h3>
+          <button class="close md-close" type="button" data-dismiss="modal" aria-hidden="true"
+            onclick="return ocultar()"><span class="mdi mdi-close"> </span></button>
+        </div>
+        <div class="modal-body">
+          <input class="form-control" type="hidden" id="idClienteCreate" value="">
+          <div class="form-group">
+            <label>ID Producto</label>
+            <input class="form-control" type="text" placeholder="1" id="rutClienteCreate"
+              onkeypress="return soloNumeros(event)">
+          </div>
+          <div class="form-group">
+            <label>Nombre Producto</label>
+            <input class="form-control" type="text" placeholder="Ej Almendras" id="nombreClienteCreate"
+              onkeypress="return soloLetras(event)">
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="input-group mb-3">
+                <select class="custom-select" id="inputGroupSelect02">
+                  <option selected="">Agrega Kilos</option>
+                  <option value="1">10</option>
+                  <option value="2">20</option>
+                  <option value="3">30</option>
+                  <option value="3">40</option>
+                  <option value="3">50</option>
+                  <option value="3">60</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>Precio por kilo</label>
+              <input class="form-control" type="text" placeholder="0" id="telefonoClienteCreate"
+                onkeypress="return soloNumeros(event)">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary md-close" type="button" data-dismiss="modal"
+              onclick="return ocultar()">Cancelar</button>
+            <button class="btn btn-success md-close" type="button" data-dismiss="modal" id="btnAgregar"
+              name="btnAgregar" onclick="alerta()">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal agregar-->
+
+
+  <!--modal eliminar-->
+  <div class="modal fade show" id="mod-warning" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;"
+    aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-hidden="true" onclick="return ocultar2()"><span
+              class="mdi mdi-close"></span></button>
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <div class="text-warning"><span class="modal-main-icon mdi mdi-alert-triangle"></span></div>
+            <h3>Alerta</h3>
+            <p>¿Seguro que deseas eliminar?.</p>
+            <div class="mt-8">
+              <button class="btn btn-space btn-secondary" type="button" data-dismiss="modal"
+                onclick="return ocultar2()">No</button>
+              <button class="btn btn-space btn-warning" type="button" data-dismiss="modal"
+                onclick="return alerta2()">Si</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+  <!--modal eliminar-->
+
+  <!--modal editar-->
+  <div class="modal fade colored-header colored-header-success show" id="md-form-edit" tabindex="-1" role="dialog"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-header-colored">
+          <h3 class="modal-title">Edicion de productos</h3>
+          <button class="close md-close" type="button" data-dismiss="modal" aria-hidden="true"
+            onclick="return ocultar3()"><span class="mdi mdi-close"> </span></button>
+        </div>
+        <div class="modal-body">
+          <input class="form-control" type="hidden" id="idClienteCreate" value="">
+          <div class="form-group">
+            <label>ID Producto</label>
+            <input class="form-control" type="text" placeholder="1" id="idProducto"
+              onkeypress="return soloNumeros(event)">
+          </div>
+          <div class="form-group">
+            <label>Nombre Producto</label>
+            <input class="form-control" type="text" placeholder="Ej Almendras" id="nombreProducto"
+              onkeypress="return soloLetras(event)">
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="input-group mb-3">
+                <br>
+
+                <select class="custom-select" id="selectKilos">
+                  <option selected="">Agrega Kilos</option>
+                  <option value="1">10</option>
+                  <option value="2">20</option>
+                  <option value="3">30</option>
+                  <option value="3">40</option>
+                  <option value="3">50</option>
+                  <option value="3">60</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>Precio por kilo</label>
+              <input class="form-control" type="text" placeholder="0" id="precio"
+                onkeypress="return soloNumeros(event)">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary md-close" type="button" data-dismiss="modal"
+              onclick="return ocultar3()">Cancelar</button>
+            <button class="btn btn-success md-close" type="button" data-dismiss="modal" id="btnAgregar"
+              name="btnAgregar" onclick="alerta()">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--modal editar-->
+
+
+
+
+
+</body>
+
+</html>
