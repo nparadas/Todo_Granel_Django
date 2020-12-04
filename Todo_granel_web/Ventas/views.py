@@ -9,6 +9,7 @@ from django.http import JsonResponse,HttpResponse
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth.decorators import login_required
 from Ventas.models import Producto
+
 # Create your views here.
 def about(request):
     return render(request, 'Ventas/about.html', {})
@@ -35,7 +36,8 @@ def login(request):
                 # Hacemos el login manualmente
                 do_login(request, user)
                 # Y le redireccionamos a la portada
-                return render(request, 'Ventas/mantenedor.html', {})
+                productos = Producto.objects.all().order_by('name')
+                return redirect('mantenedor')
 
     # Si llegamos al final renderizamos el formulario
     return render(request, "Ventas/login.html", {'form': form})
@@ -57,7 +59,8 @@ def register(request):
                 # Hacemos el login manualmente
                 do_login(request, user)
                 # Y le redireccionamos a la portada
-                return render(request, 'Ventas/mantenedor.html', {})
+                productos = Producto.objects.all().order_by('name')
+                return redirect('mantenedor')
 
     # Si queremos borramos los campos de ayuda
     form.fields['username'].help_text = None
