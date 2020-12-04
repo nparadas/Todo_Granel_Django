@@ -13,6 +13,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'assets/lib/material-design-icons/css/material-design-iconic-font.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'assets/beagle/css/app.css' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -65,6 +68,7 @@
               <th style="width:23%;">Id producto</th>
               <th style="width:23%;">Nombre producto</th>
               <th class="number" style="width:23%;">Precio</th>
+              <th class="number" style="width:23%;">Kilos</th>
               <th class="number" style="width:23%;">Cantidad</th>
               <th class="actions" style="width:5%;">Modificar</th>
               <th class="actions" style="width:5%;">Eliminar</th>
@@ -72,116 +76,22 @@
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Avena integral</td>
-              <td class="number">1400</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
+              {% for producto in productos %}
+                  <div class="elementi">
+                      <tr>
+                          <td >{{producto.id}}</td> 
+                          <td>{{producto.name}}</td> 
+                          <td class="number">{{producto.precio}}</td> 
+                          <td class="number">{{producto.kilos}}</td> 
+                          <td class="number">{{producto.cantidad}}</td> 
+                          <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
+                            onclick="return mostrareditar({{producto.id}},'{{producto.name}}',{{producto.precio}},{{producto.kilos}},{{producto.cantidad}})"></i></a></td>
+                          <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
+                            onclick="return mostrareliminar({{producto.id}})"></i></a></td>
+                      </tr>
+                  </div>
+              {% endfor %}
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Avena machacada</td>
-              <td class="number">1400</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Avena organica</td>
-              <td class="number">5000</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Avena sin gluten</td>
-              <td class="number">1400</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Quinoa</td>
-              <td class="number">3000</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Avena Quinoa maqui</td>
-              <td class="number">3000</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Hojuela de maiz</td>
-              <td class="number">2800</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Amaranto</td>
-              <td class="number">2800</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Arveja partida</td>
-              <td class="number">2000</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Garbanzos nacional</td>
-              <td class="number">3600</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Lenteja negra</td>
-              <td class="number">3600</td>
-              <td class="number">50</td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-edit"
-                    onclick="return mostrareditar()"></i></a></td>
-              <td class="actions"><a class="icon" href="#"><i class="mdi mdi-delete"
-                    onclick="return mostrareliminar()"></i></a></td>
-            </tr>
-
           </tbody>
         </table>
       </div>
@@ -201,17 +111,26 @@
       <p>Copyrigth &copy; 2020</p>
     </div>
   </footer>
+  
   <!--Fin Footer-->
 
-  <script type="text/javascript" src="assets/lib/jquery/jquery.js"></script>
-  <script type="text/javascript" src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-  <script type="text/javascript" src="assets/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script type="text/javascript" src="assets/lib/select2/js/select2.js"></script>
-  <script type="text/javascript" src="assets/lib/select2/js/select2.full.js"></script>
-  <script type="text/javascript" src="assets/beagle/js/app.js"></script>
-  <script type="text/javascript" src="assets/lib/js.cookie/js.cookie.js"></script>
-  <script type="text/javascript" src="js/mantenedor.js"></script>
+  <script type="text/javascript" src="{% static 'assets/lib/jquery/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/lib/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.bundle.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/lib/select2/js/select2.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/lib/select2/js/select2.full.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/beagle/js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'assets/lib/js.cookie/js.cookie.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/mantenedor.js' %}"></script>
+  <script>
+    function init() {
+      const table = $("#dt-table").DataTable();
+      const tableData = getTableData(table);
+      createHighcharts(tableData);
+      setTableEvents(table);
+    }
 
+  </script>
 
   <!-- modal agregar-->
   <div class="modal fade colored-header colored-header-success show" id="md-form-create" tabindex="-1" role="dialog"
@@ -223,48 +142,43 @@
           <button class="close md-close" type="button" data-dismiss="modal" aria-hidden="true"
             onclick="return ocultar()"><span class="mdi mdi-close"> </span></button>
         </div>
-        <div class="modal-body">
-          <input class="form-control" type="hidden" id="idClienteCreate" value="">
-          <div class="form-group">
-            <label>ID Producto</label>
-            <input class="form-control" type="text" placeholder="1" id="rutClienteCreate"
-              onkeypress="return soloNumeros(event)">
-          </div>
-          <div class="form-group">
-            <label>Nombre Producto</label>
-            <input class="form-control" type="text" placeholder="Ej Almendras" id="nombreClienteCreate"
-              onkeypress="return soloLetras(event)">
-          </div>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <div class="input-group mb-3">
-                <select class="custom-select" id="inputGroupSelect02">
-                  <option selected="">Agrega Kilos</option>
-                  <option value="1">10</option>
-                  <option value="2">20</option>
-                  <option value="3">30</option>
-                  <option value="3">40</option>
-                  <option value="3">50</option>
-                  <option value="3">60</option>
-                </select>
+        <form  method="POST" > 
+          {% csrf_token %}
+          <div class="modal-body">
+            <input class="form-control" type="hidden" id="idClienteCreate" value="">
+            <input class="form-control" type="hidden" name="accion" value="crear">
+            <div class="form-group">
+              <label>Nombre Producto</label>
+              <input class="form-control" type="text" placeholder="Ej Almendras" name="nombreProductoCreate" id="nombreProductoCreate"
+                onkeypress="return soloLetras(event)">
+            </div>
+            <div class="form-group">
+              <label>Kilos</label>
+              <input class="form-control" type="text" placeholder="0" name="kilosProductoCreate" id="kilosProductoCreate"
+                      onkeypress="return soloNumeros(event)">
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label>Precio por kilo</label>
+                <input class="form-control" type="text" placeholder="0" name="precioProductoCreate" id="precioProductoCreate"
+                  onkeypress="return soloNumeros(event)">
               </div>
             </div>
-
-          </div>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <label>Precio por kilo</label>
-              <input class="form-control" type="text" placeholder="0" id="telefonoClienteCreate"
-                onkeypress="return soloNumeros(event)">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label>Cantidad</label>
+                <input class="form-control" type="text" placeholder="0" name="cantidadProductoCreate" id="cantidadProductoCreate"
+                  onkeypress="return soloNumeros(event)">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary md-close" type="button" data-dismiss="modal"
+                onclick="return ocultar()">Cancelar</button>
+              <button class="btn btn-success md-close" type="submit" data-dismiss="modal" id="btnAgregar"
+                name="btnAgregar" >Agregar</button>
             </div>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary md-close" type="button" data-dismiss="modal"
-              onclick="return ocultar()">Cancelar</button>
-            <button class="btn btn-success md-close" type="button" data-dismiss="modal" id="btnAgregar"
-              name="btnAgregar" onclick="alerta()">Agregar</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -280,19 +194,23 @@
           <button class="close" type="button" data-dismiss="modal" aria-hidden="true" onclick="return ocultar2()"><span
               class="mdi mdi-close"></span></button>
         </div>
-        <div class="modal-body">
-          <div class="text-center">
-            <div class="text-warning"><span class="modal-main-icon mdi mdi-alert-triangle"></span></div>
-            <h3>Alerta</h3>
-            <p>¿Seguro que deseas eliminar?.</p>
-            <div class="mt-8">
-              <button class="btn btn-space btn-secondary" type="button" data-dismiss="modal"
-                onclick="return ocultar2()">No</button>
-              <button class="btn btn-space btn-warning" type="button" data-dismiss="modal"
-                onclick="return alerta2()">Si</button>
+        <form  method="POST" > 
+          {% csrf_token %}
+          <div class="modal-body">
+            <div class="text-center">
+              <div class="text-warning"><span class="modal-main-icon mdi mdi-alert-triangle"></span></div>
+              <input class="form-control" type="hidden" name="idProductDelete" id="idProductDelete" >
+              <input class="form-control" type="hidden" name="accion" value="eliminar">    
+              <h3>Alerta</h3>
+              <p>¿Seguro que deseas eliminar?.</p>
+              <div class="mt-8">
+                <button class="btn btn-space btn-secondary" type="button" data-dismiss="modal"
+                  onclick="return ocultar2()">No</button>
+                <button class="btn btn-space btn-warning" type="submit" data-dismiss="modal">Si</button>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
         <div class="modal-footer"></div>
       </div>
     </div>
@@ -309,50 +227,48 @@
           <button class="close md-close" type="button" data-dismiss="modal" aria-hidden="true"
             onclick="return ocultar3()"><span class="mdi mdi-close"> </span></button>
         </div>
-        <div class="modal-body">
-          <input class="form-control" type="hidden" id="idClienteCreate" value="">
-          <div class="form-group">
-            <label>ID Producto</label>
-            <input class="form-control" type="text" placeholder="1" id="idProducto"
-              onkeypress="return soloNumeros(event)">
-          </div>
-          <div class="form-group">
-            <label>Nombre Producto</label>
-            <input class="form-control" type="text" placeholder="Ej Almendras" id="nombreProducto"
-              onkeypress="return soloLetras(event)">
-          </div>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <div class="input-group mb-3">
-                <br>
-
-                <select class="custom-select" id="selectKilos">
-                  <option selected="">Agrega Kilos</option>
-                  <option value="1">10</option>
-                  <option value="2">20</option>
-                  <option value="3">30</option>
-                  <option value="3">40</option>
-                  <option value="3">50</option>
-                  <option value="3">60</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="form-group col-md-12">
-              <label>Precio por kilo</label>
-              <input class="form-control" type="text" placeholder="0" id="precio"
+        <form  method="POST" > 
+          {% csrf_token %}
+          <div class="modal-body">
+            <input class="form-control" type="hidden" id="idClienteCreate" value="">
+            <input class="form-control" type="hidden" name="accion" value="modificar">
+            <div class="form-group">
+              <label>ID Producto</label>
+              <input class="form-control" type="text" placeholder="1" name="idProducto" id="idProducto"
                 onkeypress="return soloNumeros(event)">
             </div>
+            <div class="form-group">
+              <label>Nombre Producto</label>
+              <input class="form-control" type="text" placeholder="Ej Almendras" name="nombreProducto" id="nombreProducto"
+                onkeypress="return soloLetras(event)">
+            </div>
+            <div class="form-group">
+              <label>Kilos</label>
+              <input class="form-control" type="text" placeholder="0" name="kilosProducto" id="kilosProducto"
+                      onkeypress="return soloNumeros(event)">
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label>Precio por kilo</label>
+                <input class="form-control" type="text" placeholder="0" name="precioProducto" id="precioProducto"
+                  onkeypress="return soloNumeros(event)">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label>Cantidad</label>
+                <input class="form-control" type="text" placeholder="0" name="cantidadProducto" id="cantidadProducto"
+                  onkeypress="return soloNumeros(event)">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary md-close" type="button" data-dismiss="modal"
+                onclick="return ocultar3()">Cancelar</button>
+              <button class="btn btn-success md-close" type="submit" data-dismiss="modal" id="btnAgregar"
+                name="btnAgregar" >Aceptar</button>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary md-close" type="button" data-dismiss="modal"
-              onclick="return ocultar3()">Cancelar</button>
-            <button class="btn btn-success md-close" type="button" data-dismiss="modal" id="btnAgregar"
-              name="btnAgregar" onclick="alerta()">Agregar</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

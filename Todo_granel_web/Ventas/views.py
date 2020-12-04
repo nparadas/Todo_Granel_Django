@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
+from django.template import loader,RequestContext
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth.decorators import login_required
+from Ventas.models import Producto
 # Create your views here.
 def about(request):
     return render(request, 'Ventas/about.html', {})
@@ -68,7 +70,36 @@ def register(request):
 def mantenedor(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
-        return render(request, 'Ventas/mantenedor.html', {})
+        if request.method == 'POST':
+            if request.POST['accion']=='crear':
+                name = request.POST['nombreProductoCreate']
+                kilos = request.POST['kilosProductoCreate']
+                precio = request.POST['precioProductoCreate']
+                cantidad = request.POST['cantidadProductoCreate']
+                ins = Producto(name=name,kilos=kilos,precio=precio,cantidad=cantidad)
+                ins.save()
+                productos = Producto.objects.all().order_by('name')
+                return render(request, 'Ventas/mantenedor.html', {'productos': productos})
+            elif request.POST['accion']=='modificar':
+                producto = Producto.objects.get(id = request.POST['idProducto'])
+                producto.name = request.POST['nombreProducto']
+                producto.kilos = request.POST['kilosProducto']
+                producto.precio = request.POST['precioProducto']
+                producto.cantidad = request.POST['cantidadProducto']
+                producto.save()
+                productos = Producto.objects.all().order_by('name')
+                return render(request, 'Ventas/mantenedor.html', {'productos': productos})
+            elif request.POST['accion']=='eliminar':
+                producto = Producto.objects.get(id = request.POST['idProductDelete'])
+                producto.delete()
+                productos = Producto.objects.all().order_by('name')
+                return render(request, 'Ventas/mantenedor.html', {'productos': productos})
+  
+        else:
+            productos = Producto.objects.all().order_by('name')
+            return render(request, 'Ventas/mantenedor.html', {'productos': productos})
+
+        return HttpResponse(template.render(context))
     # En otro caso redireccionamos al login
     return redirect('/login')
     

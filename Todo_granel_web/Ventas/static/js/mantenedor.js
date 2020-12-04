@@ -7,16 +7,20 @@ function mostrar(){
 
 
 //inicio mostrar editar
-function mostrareditar(){
-    
+function mostrareditar(id,nombre,precio,kilos,cantidad){
+    $('#idProducto').val(id)
+    $('#nombreProducto').val(nombre)
+    $('#kilosProducto').val(kilos)
+    $('#precioProducto').val(precio)
+    $('#cantidadProducto').val(cantidad)
     document.getElementById('md-form-edit').style.display='block';
 
 }
 
 
 //mostar eliminar
-function mostrareliminar(){
-    
+function mostrareliminar(id){
+    $('#idProductDelete').val(id)
     document.getElementById('mod-warning').style.display='block';
 
 }
@@ -96,6 +100,7 @@ function soloNumeros(e){
 function limpiar() {
     document.getElementById("idProducto").value = "";
     document.getElementById("nombreProducto").value = "";
-    document.getElementById("selectKilos").selectedIndex = 0;
-    document.getElementById("precio").value = "";
+    document.getElementById("kilosProducto").value = "";
+    document.getElementById("precioProducto").value = "";
+    document.getElementById("cantidadProducto").value = "";
 }
